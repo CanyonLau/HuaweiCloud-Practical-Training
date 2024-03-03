@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间为mapper接口 -->
+<mapper namespace="com.ithjc.mapper.GoodsMapper">
+    <select id="getGoodsList" resultType="goods">
+        select *
+        from goods
+    </select>
+
+    <select id="findGoodsById" resultType="goods">
+        select * from goods where id = #{id}
+    </select>
+
+    <insert id="addGoods" parameterType="goods">
+        insert into goods (id,goodsName, goodsPrice, goodsNum, goodsType, remark)
+        values (null,#{goodsName}, #{goodsPrice}, #{goodsNum}, #{goodsType}, #{remark});
+    </insert>
+
+    <delete id="deleteGoodsById" parameterType="java.lang.Integer">
+        delete
+        from goods
+        where id = #{id};
+    </delete>
+
+    <update id="updateGoodsById" parameterType="goods">
+        update goods
+        <set>
+            <if test="goodsName != null and goodsName != ''">
+                goodsName = #{goodsName},
+            </if>
+            <if test="goodsPrice != null and goodsPrice != ''">
+                goodsPrice = #{goodsPrice},
+            </if>
+            <if test="goodsType != null and goodsType != ''">
+                goodsType = #{goodsType},
+            </if>
+            <if test="goodsNum != null and goodsNum != ''">
+                goodsType = #{goodsType},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark}
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+</mapper>

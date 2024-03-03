@@ -1,0 +1,18 @@
+# 设置端口
+server:
+  port: 8080
+
+# mybatis 的配置
+mybatis:
+  type-aliases-package: com.ithjc.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:/mapper/*.xml
+
+# spring 的配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/goods?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
